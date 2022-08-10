@@ -1,8 +1,10 @@
 {
-    "pages":[
+    "pages": [
       "pages/home/home",
       "pages/maps/maps",
-      "pages/center/center"
+      "pages/center/center",
+      "pages/addList/addList",
+      "pages/mapslist/mapslist"
     ],
     "window":{
       "backgroundTextStyle":"light",
