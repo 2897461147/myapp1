@@ -1,2 +1,2 @@
 <!--pages/maps/maps.wxml-->
-<map longitude="115.46699523925781" latitude="35.27084997704059"></map>
+<button bindtap="showMap">点击打开地图</button>

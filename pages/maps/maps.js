@@ -1,4 +1,5 @@
 // pages/maps/maps.js
+const chooseLocation = requirePlugin('chooseLocation');
 Page({
 
   /**
@@ -9,8 +10,47 @@ Page({
     weidu:"",
     dizhi:"11",
     mingcheng:"",*/
+    setting:{
+      skew: 0,
+      rotate: 0,
+      showLocation: false,
+      showScale: false,
+      subKey: '',
+      layerStyle: 1,
+      enableZoom: true,
+      enableScroll: true,
+      enableRotate: false,
+      showCompass: false,
+      enable3D: false,
+      enableOverlooking: false,
+      enableSatellite: false,
+      enableTraffic: false,
+    },
 
   },
+  showMap(){
+    const key = 'YLFBZ-47HLQ-R655T-GYRGY-BCZR6-NMFFX'; //使用在腾讯位置服务申请的key
+    const referer = 'chooseLocation'; //调用插件的app的名称
+    const location = JSON.stringify({
+      latitude: 39.89631551,
+      longitude: 116.323459711
+    });
+    const category = '生活服务,娱乐休闲';
+
+    wx.navigateTo({
+      url: 'plugin://chooseLocation/index?key=' + key + '&referer=' + referer + '&location=' + location + '&category=' + category
+    })
+  },
+
+handleGet(){
+  wx.request({
+    url:'https://apis.map.qq.com/place_cloud/table/list?key=YLFBZ-47HLQ-R655T-GYRGY-BCZR6-NMFFX',
+    method:"GET",
+    success:(res)=>{
+      console.log(res)
+    }
+  })
+},
 
 
 
@@ -55,8 +95,23 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
+    // 此处加载数据，每次进入都加重新加载
 
+    const site = chooseLocation.getLocation();
+    // 插件返回的数据放在这个对象里面
+    if (site) {
+      console.log(site)
+      this.setData({
+        siteInfo: site.name
+      })
+
+      let location = {
+        latitude: site.latitude,
+        longitude: site.longitude
+      }
+      wx.setStorageSync('location', location)
+    }
   },
 
   /**
