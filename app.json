@@ -20,6 +20,7 @@
             "selectedIconPath": "images/shouyetianchong.png"
         },
         {
+
             "pagePath": "pages/maps/maps",
             "text": "地图",
 

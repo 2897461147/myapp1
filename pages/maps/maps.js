@@ -5,12 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    jingdu:"",
+    /*jingdu:"",
     weidu:"",
     dizhi:"11",
-    mingcheng:"",
+    mingcheng:"",*/
+
   },
-  getlocal(){
+
+
+
+
+
+  /**getlocal(){
     var that=this
     wx.getLocation({
       success:function (res){
@@ -27,7 +33,8 @@ Page({
     latitude:Number(e.detail.value.weidu),
     longitude:Number(e.detail.value.jingdu)
   })
-  },
+  },**/
+
 
 
 
