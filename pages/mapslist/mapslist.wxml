@@ -1,3 +1,7 @@
 <!--pages/mapslist/mapslist.wxml-->
-<view></view>
-
+<view class="box" wx:for="{{cityList}}" wx:key="index">
+    <view class="namebox" >
+        {{item.title}}
+    </view>
+    <view class="telbox">电话：{{item.tel}}</view>
+</view>

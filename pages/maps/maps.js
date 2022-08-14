@@ -26,7 +26,7 @@ Page({
       enableSatellite: false,
       enableTraffic: false,
     },
-
+    cityList:[]
   },
   showMap(){
     const key = 'YLFBZ-47HLQ-R655T-GYRGY-BCZR6-NMFFX'; //使用在腾讯位置服务申请的key
@@ -51,6 +51,18 @@ handleGet(){
     }
   })
 },
+  getList(){
+    wx.request({
+      url:'https://apis.map.qq.com/place_cloud/data/list?table_id=0oLe5K1g-3yZh7TvZ1&orderby=id&page_index=1&page_size=20&key=YLFBZ-47HLQ-R655T-GYRGY-BCZR6-NMFFX',
+      method:'GET',
+      success:(res)=>{
+        console.log(res.data.result.data)
+        this.setData({
+          cityList:res.data.result.data
+        })
+      }
+    })
+  },
 
 
 

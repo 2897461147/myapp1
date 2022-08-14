@@ -7,16 +7,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cityList:[]
   },
-  renderList() {
+   
+  current: 1,
+  total:0,
+
+  getList(format, data){
     request({
-      url:'/marker'
-    }).then(res=>{
-      console.log(res)
+      url: `/list?table_id=0oLe5K1g-3yZh7TvZ1&orderby=id&page_index=${this.current}&page_size=5&key=YLFBZ-47HLQ-R655T-GYRGY-BCZR6-NMFFX`,
+      method: 'GET',
+
+    },true).then(res=>{
+      //console.log(res)
+      this.total=Number(res.total)
+      this.setData({
+        cityList: [...this.data.cityList, ...res.list.result.data]
+      }, data)
     })
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,14 +37,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+      this.getList()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getList()
   },
 
   /**
@@ -56,13 +65,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+      setTimeout(()=> {
+        wx.stopPullDownRefresh()
+      },1000)
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log(this.data.cityList.length,this.total)
+    if(this.data.cityList.length>this.total){
+      return
+    }
+
+    console.log("daoji")
+    this.current++
+    this.getList()
 
   },
 

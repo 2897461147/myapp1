@@ -3,11 +3,12 @@
       "pages/home/home",
       "pages/maps/maps",
       "pages/center/center",
-      "pages/addList/addList",
-      "pages/mapslist/mapslist"
+      "pages/mapslist/mapslist",
+      "pages/auth/auth",
+      "pages/personal/personal"
     ],
     "window":{
-      "backgroundTextStyle":"light",
+      "backgroundTextStyle":"dark",
       "navigationBarBackgroundColor": "#fff",
       "navigationBarTitleText": "便民核酸",
       "navigationBarTextStyle":"black"
@@ -28,7 +29,7 @@
             "selectedIconPath": "images/ditu.png"
         },
         {
-            "pagePath": "pages/center/center",
+            "pagePath":"pages/center/center",
             "text": "个人中心",
             "iconPath": "images/gerenzhongxin.png",
             "selectedIconPath": "images/gerenzhongxin_1.png"
@@ -49,7 +50,9 @@
 
 
 
-    "style": "v2",
-
-    "sitemapLocation": "sitemap.json" 
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  }
 }
