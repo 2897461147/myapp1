@@ -74,12 +74,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log(this.data.cityList.length,this.total)
+    //console.log(this.data.cityList.length,this.total)
     if(this.data.cityList.length>this.total){
       return
     }
 
-    console.log("daoji")
+    //console.log("daoji")
     this.current++
     this.getList()
 
@@ -90,5 +90,8 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleEvent(){
+    console.log("111")
   }
 })

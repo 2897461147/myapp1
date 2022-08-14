@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "demo-search": "../../components/search"
+  },
   "enablePullDownRefresh": true
 }
