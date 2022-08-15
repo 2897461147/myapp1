@@ -1,6 +1,12 @@
-// pages/mapdetail/mapdetail.js
-
-
+// pages/maproute/maproute.js
+let plugin = requirePlugin('routePlan');
+let key = 'YLFBZ-47HLQ-R655T-GYRGY-BCZR6-NMFFX';  //使用在腾讯位置服务申请的key
+let referer = '找核酸检测点';   //调用插件的app的名称
+let endPoint = JSON.stringify({  //终点
+  'name': this.data.name,
+  'latitude': this.data.lat,
+  'longitude': this.data.lng
+});
 
 Page({
 
@@ -8,47 +14,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    lng:0,
+    name:'',
     lat:0,
-    name:'11'
+    lng:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options)
-    wx.setNavigationBarTitle({
-      title:options.name
-    })
     this.setData({
-        lng:Number(options.lng),
-        lat:Number(options.lat),
-        name:options.name
+      lng:Number(options.lng),
+      lat:Number(options.lat),
+      name:options.name
     })
-  },
-  gotoHere(evt){
-    var name=evt.currentTarget.dataset.name
-    var lat=evt.currentTarget.dataset.lat
-    var lng=evt.currentTarget.dataset.lng
-    console.log(name,lat,lng)
-    wx.navigateTo({
-      url: `/pages/maproute/maproute?&name=${name}&lat=${lat}&lng=${lng}`
+    wx.switchTab({
+      url:'/pages/mapdetail/mapdetail'
     })
-  },
 
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-    //this.getAdr()
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
+    wx.navigateTo({
+      url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint
+    });
 
   },
 

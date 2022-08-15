@@ -1,3 +1,3 @@
 <!--pages/mapdetail/mapdetail.wxml-->
-<map latitude="{{latitude}}" longitude="{{longitude}}"></map>
-<button bindtap="gotoHere" type="primary">到这里去</button>
+<map latitude="{{lat}}" longitude="{{lng}}"></map>
+<button bindtap="gotoHere" type="primary" data-name="{{name}}" data-lat="{{lat}}" data-lng="{{lng}}">到这里去</button>
