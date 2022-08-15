@@ -1,4 +1,13 @@
 // pages/mapdetail/mapdetail.js
+let plugin = requirePlugin('routePlan');
+let key = 'YLFBZ-47HLQ-R655T-GYRGY-BCZR6-NMFFX';  //使用在腾讯位置服务申请的key
+let referer = '便民核酸';   //调用插件的app的名称
+let endPoint = JSON.stringify({  //终点
+  'name': '北京西站',
+  'latitude': 39.894806,
+  'longitude': 116.321592
+});
+
 
 Page({
 
@@ -6,8 +15,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    longitude:0,
-    latitude:0,
+    lng:0,
+    lat:0,
   },
 
   /**
@@ -19,14 +28,26 @@ Page({
       title:options.name
     })
     this.getAdr(options.lat,options.lng)
+
   },
   getAdr(lat,lng){
     this.setData({
-      longitude:lng,
-      latitude:lat,
+      lng:lng,
+      lat:lat,
     })
   },
-  gotoHere(){},
+  gotoHere(){
+
+    this.endPoint({
+      name: '北京西站',
+      latitude: this.data.lng,
+      longitude: this.data.lat
+    })
+
+    wx.navigateTo({
+      url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint
+    });
+  },
 
 
   /**
