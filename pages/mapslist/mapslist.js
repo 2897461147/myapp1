@@ -97,7 +97,6 @@ Page({
     var lat=evt.currentTarget.dataset.lat
     var lng=evt.currentTarget.dataset.lng
     wx.navigateTo({
-
       url: `/pages/mapdetail/mapdetail?ud_id=${id}&name=${name}&lat=${lat}&lng=${lng}`
     })
   }
