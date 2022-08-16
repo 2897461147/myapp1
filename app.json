@@ -6,8 +6,7 @@
       "pages/mapslist/mapslist",
       "pages/auth/auth",
       "pages/personal/personal",
-      "pages/mapdetail/mapdetail",
-      "pages/maproute/maproute"
+      "pages/mapdetail/mapdetail"
     ],
     "window":{
       "backgroundTextStyle":"dark",

@@ -19,10 +19,9 @@ handledSetdata(lng,lat,name){
     'latitude': lat,
     'longitude': lng
   });
-  let mode ="driving"
 
   wx.navigateTo({
-    url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint + '&mode' + mode
+    url: 'plugin://routePlan/index?key=' + key + '&referer=' + referer + '&endPoint=' + endPoint 
   });
 },
   /**
